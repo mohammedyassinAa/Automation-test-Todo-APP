@@ -4,26 +4,27 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 @Entity
 public class Todo {
     
-	@Id
-	@GeneratedValue
-	private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     
-	private String user;
+    private String user;
     
-    @Size(min=10, message="Enter at least 10 Characters...")
+    @Size(min = 10, message = "Enter at least 10 Characters...")
     private String desc;
 
     private Date targetDate;
     private boolean isDone;
 
     public Todo() {
-    		super();
+        super();
     }
     
     public Todo(int id, String user, String desc, Date targetDate,
